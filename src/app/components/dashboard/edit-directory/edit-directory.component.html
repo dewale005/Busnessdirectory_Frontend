@@ -1,0 +1,80 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <mat-card class="mt">
+        <h2 class="mt title">Edit Directory</h2>
+        <div class="form mt">
+          <mat-form-field appearance="outline">
+            <mat-label>Business Name</mat-label>
+            <input [(ngModel)]="data.data.name" matInput placeholder="" />
+            <mat-hint>Give a Suitable Business Name</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea
+              [(ngModel)]="data.data.description"
+              matInput
+              placeholder=""
+              rows="6"
+            ></textarea>
+            <mat-hint>Give a Suitable Description</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Web Address</mat-label>
+            <input [(ngModel)]="data.data.website" matInput placeholder="" />
+            <mat-hint>What is the web url for the Business</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input [(ngModel)]="data.data.email" matInput placeholder="" />
+            <mat-hint>What is the email for the Business</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Phone Number</mat-label>
+            <input
+              matInput
+              [(ngModel)]="data.data.phone_no"
+              placeholder=""
+              class="example-right-align"
+            />
+            <mat-icon matPrefix>phone&nbsp;&nbsp;&nbsp;</mat-icon>
+            <mat-hint>What is the Phone Number for the Business</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input [(ngModel)]="data.data.address" matInput placeholder="" />
+            <mat-hint>What is the Address for the Business</mat-hint>
+          </mat-form-field>
+          <input type="file" [(ngModel)]="data.filename" />
+          <div class="but">
+            <button
+              class="submit"
+              (click)="onSubmit()"
+              mat-raised-button
+              color="primary"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card class="mt">
+        <h3 class="mt title">Edit Directory's Category</h3>
+        <mat-chip-list>
+          <mat-chip *ngFor="let cat of data.data.categories" color="primary" [matMenuTriggerFor]="menu" selected>{{cat.category}}</mat-chip>
+          <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                  <mat-icon>delete_sweep</mat-icon>
+                  <span>Delete</span>
+              </button>
+            </mat-menu>
+          <mat-chip (click)="openDialog()" color="accent" selected>
+            <mat-icon>add_circle</mat-icon>
+            Add Category
+          </mat-chip>
+        </mat-chip-list>
+      </mat-card>
+    </div>
+  </div>
+</div>

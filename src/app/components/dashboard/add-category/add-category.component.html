@@ -1,0 +1,14 @@
+<div mat-dialog-content>
+  <p>What's the name of the category you want to Add?</p>
+  <mat-form-field appearance="outline">
+    <mat-label>Category</mat-label>
+    <input [(ngModel)]="data.category" matInput placeholder="" />
+    <mat-hint>What is the Name of the category you wan to add?</mat-hint>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">
+    No Thanks
+  </button>
+  <button mat-raised-button color="primary" (click)="addCategory()">Add</button>
+</div>

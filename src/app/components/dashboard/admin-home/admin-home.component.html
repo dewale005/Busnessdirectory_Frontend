@@ -1,0 +1,89 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-7 mt">
+      <mat-form-field appearance="outline">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="Search" />
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-hint>Search for any Business Directory</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-5 mt">
+      <div class="add">
+        <button (click)="openDialog()" mat-raised-button color="primary">
+          <mat-icon>add_circle</mat-icon>
+          Add Category
+        </button>
+        <a routerLink="/Add">
+          <button mat-raised-button color="accent">
+            <mat-icon>add_circle</mat-icon>
+            Add a New Directory
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 mt">
+      <mat-card *ngFor="let inf of info.data">
+        <div class="row">
+          <div class="col-sm-5">
+            <img src="{{ inf.filename }}" alt="" style="width: 100%" />
+          </div>
+          <div class="col-sm-6">
+            <mat-card-title>{{ inf.name }}</mat-card-title>
+            <mat-card-content>{{ inf.description }}</mat-card-content>
+            <mat-card-subtitle
+              ><span><strong>Address: </strong></span>
+              {{ inf.address }}</mat-card-subtitle
+            >
+            <mat-card-subtitle
+              ><span><strong>Contact Number: </strong></span>
+              {{ inf.phone_no }}</mat-card-subtitle
+            >
+            <mat-card-subtitle
+              ><span><strong>Email: </strong></span>
+              {{ inf.email }}</mat-card-subtitle
+            >
+            <mat-card-subtitle
+              ><span><strong>Web Address: </strong></span>
+              {{ inf.website }}</mat-card-subtitle
+            >
+            <hr />
+            <mat-chip-list>
+              <mat-chip
+                *ngFor="let cat of inf.categories"
+                color="primary"
+                selected
+                >{{ cat.category }}</mat-chip
+              >
+            </mat-chip-list>
+          </div>
+          <div class="col-sm-1">
+            <p>
+              <a routerLink="/edit/{{ inf.id }}">
+                <button
+                  mat-fab
+                  matTooltip="Edit Directory"
+                  matTooltipPosition="left"
+                >
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </a>
+            </p>
+            <p>
+              <button
+                mat-fab
+                matTooltip="Delete Directory"
+                matTooltipPosition="left"
+              >
+                <mat-icon>delete_sweep</mat-icon>
+              </button>
+            </p>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
